@@ -1,14 +1,22 @@
-
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import AuthForm from "./components/auth/auth/SignInForm";
+
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import SignInPage from "./components/auth/SignInPage/SignInPage";
+import SignUpPage from "./components/auth/SignUpPage/SignUpPage";
 
 const theme = createTheme();
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <AuthForm />
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <Routes>
+          <Route path="/signIn" element={<SignInPage />} />
+          <Route path="/signUp" element={<SignUpPage />} />
+          <Route path="/" element={<Navigate to="/signIn" />} />
+        </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };
 

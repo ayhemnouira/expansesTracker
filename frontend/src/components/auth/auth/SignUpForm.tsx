@@ -5,23 +5,24 @@ import InputField from "../Common/InputField";
 import AlertMessage from "../Common/AlertMessage";
 import ReButton from "../Common/ReButton";
 import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
 
 interface SignUpFormProps {
   onSubmit: (data: SignUpFormData) => void;
   isLoading?: boolean;
-  error?: string;
+  error?: string | null;
 }
 const SignUpForm = ({
   onSubmit,
   isLoading = false,
   error,
 }: SignUpFormProps) => {
-  const {   
+  const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpFormData>({ resolver: zodResolver(signUpSchema) });
-return (
+  return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box
         sx={{
@@ -58,7 +59,10 @@ return (
           helperText={errors.confirmPassword?.message}
           {...register("confirmPassword")}
         />
-        <ReButton loading={isLoading} type="submit" label="Sign In" />
+        <ReButton loading={isLoading} type="submit" label="Sign Up" />
+        <nav>
+          <Link to="/signIn">Already have an account? Sign In</Link>
+        </nav>
       </Box>
     </form>
   );

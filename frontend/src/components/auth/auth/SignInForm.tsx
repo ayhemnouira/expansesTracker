@@ -7,11 +7,12 @@ import ReButton from "../Common/ReButton";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { signInSchema, type SignInFormData } from "../SignInPage/schema";
+import { Link } from "react-router-dom";
 
 interface SignInFormProps {
   onSubmit: (data: SignInFormData) => void;
   isLoading?: boolean;
-  error?: string;
+  error: string | null;
 }
 
 const SignInForm = ({
@@ -57,6 +58,9 @@ const SignInForm = ({
         />
 
         <ReButton loading={isLoading} type="submit" label="Sign In" />
+        <nav>
+          <Link to="/signup">Already have an account? Sign In</Link>
+        </nav>
       </Box>
     </form>
   );

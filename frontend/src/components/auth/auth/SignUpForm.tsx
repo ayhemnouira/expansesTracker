@@ -38,6 +38,13 @@ const SignUpForm = ({
         {error && <AlertMessage severity="error" message={error} />}
 
         <InputField
+          label="Username"
+          type="text"
+          error={!!errors.username}
+          helperText={errors.username?.message}
+          {...register("username")}
+        />
+        <InputField
           label="Email"
           type="email"
           error={!!errors.email}

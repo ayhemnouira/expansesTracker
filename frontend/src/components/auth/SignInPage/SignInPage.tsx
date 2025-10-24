@@ -3,6 +3,7 @@ import type { SignInFormData } from "./schema";
 import { Box } from "@mui/material";
 import SignInForm from "../auth/SignInForm";
 import { Link } from "react-router-dom";
+import { loginUser } from "../../../api/authApi";
 
 const SignInPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,8 +13,15 @@ const SignInPage = () => {
       setIsLoading(true);
       setError(null);
       // perform sign in logic here
+      const reponse = await loginUser(data);
+      console.log("User logged in:", reponse);
+      //navigate("/dashboard");
     } catch (err: any) {
-      setError(err.message || "An unexpected error occurred");
+      setError(
+        err.response?.data?.message ||
+          err.message ||
+          "An unexpected error occurred"
+      );
     } finally {
       setIsLoading(false);
     }

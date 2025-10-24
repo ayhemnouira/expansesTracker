@@ -24,4 +24,5 @@ public class User implements Serializable {
     private String password;
     private Role role;
     private LocalDateTime createdAt;
+    private String username;
 }

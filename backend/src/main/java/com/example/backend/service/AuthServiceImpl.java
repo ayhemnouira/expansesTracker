@@ -52,9 +52,7 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public AuthResponseDto register(RegisterRequestDto registerRequestDto) {
-        if (!registerRequestDto.getPassword().equals(registerRequestDto.getConfirmPassword())) {
-            throw new IllegalArgumentException("Passwords do not match");
-        }
+
         String email = registerRequestDto.getEmail();
         if(userRepo.existsByEmail(email)){
             throw new IllegalArgumentException("Email already in use");

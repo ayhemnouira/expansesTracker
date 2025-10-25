@@ -2,7 +2,6 @@ export interface RegisterRequestDto {
   username: string;
   email: string;
   password: string;
-  confirmPassword: string;
 }
 
 export interface LoginRequestDto {
@@ -12,12 +11,18 @@ export interface LoginRequestDto {
 export interface UserDto {
   id: number;
   email: string;
-  username: string; 
-   role: "USER" | "ADMIN";
+  username: string;
+  role: "USER" | "ADMIN";
 }
 
 export interface AuthResponse {
   user: UserDto;
   accessToken: string;
   refreshToken: string;
+}
+export interface AuthContextType {
+  user: UserDto | null;
+  login: (user: UserDto, accessToken: string, refreshToken: string) => void;
+  logout: () => void;
+  isAuthenticated: boolean;
 }

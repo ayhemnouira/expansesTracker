@@ -59,7 +59,7 @@ const SignInForm = ({
 
         <ReButton loading={isLoading} type="submit" label="Sign In" />
         <nav>
-          <Link to="/signup">Already have an account? Sign In</Link>
+          <Link to="/signUp">Don't have an account? Sign Up</Link>
         </nav>
       </Box>
     </form>
